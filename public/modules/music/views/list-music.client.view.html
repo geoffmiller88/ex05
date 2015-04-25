@@ -1,0 +1,35 @@
+<section data-ng-controller="MusicController" data-ng-init="find()">
+    <div class="row">
+             <div class="col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading"><a href="" class="btn btn-default pull-right">Download Selected</a> <h4>Music</h4></div>
+                    <div class="panel-body">
+                      <div class="list-group">
+                        <div data-ng-repeat="music in musics">
+                            <input type="checkbox">
+                            <a style="display:inline-block" data-ng-href="#!/music/{{music._id}}"  href="#" class="list-group-item ">
+                            <strong>{{music.name}}</strong> - 
+                            <small class="list-group-item-text">
+                                Posted on
+                                <span data-ng-bind="music.created | date:'MM/dd/yyyy'"></span>
+                                by
+                                <span data-ng-bind="music.user.displayName"></span>
+                            </small>
+                            
+                        </a>
+                        </div>
+
+                        
+                        
+                      </div>
+                    </div><!--/panel-body-->
+                </div><!--/panel-->
+            </div><!--/col-->
+            
+           
+          </div><!--/row-->
+
+    <div class="alert alert-warning text-center" data-ng-hide="!music.$resolved || music.length">
+    	No Music yet, why don't you <a href="/#!/music/create">create one</a>?
+    </div>
+</section>

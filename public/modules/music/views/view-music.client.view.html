@@ -1,0 +1,71 @@
+<section data-ng-controller="MusicController" data-ng-init="findOne()">
+
+ <div class="col-sm-6">
+                
+        
+                 <div class="panel panel-default">
+                   <div class="panel-heading">
+                    <small class="pull-right">
+                      <em class="text-muted">
+                        Posted on
+                        <span data-ng-bind="music.created | date:'mediumDate'"></span>
+                        by
+                        <span data-ng-bind="music.user.displayName"></span>
+                      </em>
+                    </small>
+                    <h4>{{music.name}}</h4></div>
+                    <div class="panel-body">
+                      
+                      <hr>
+                      <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == music.user._id))">
+                      <a class="btn btn-primary" href="/#!/music/{{music._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                      </a>
+                      <a class="btn btn-primary" data-ng-click="remove();">
+                        <i class="glyphicon glyphicon-trash"></i>
+                      </a>
+                      <a class="btn btn-primary" ng-src="{{music.url}}">
+                        <i class="glyphicon glyphicon-download"></i>
+                      </a>
+                    </div>
+                      
+                    </div><!--/panel-body-->
+                 </div><!--/panel-->
+
+                 <div class="panel panel-default" ng-repeat="comment in music.comments">
+                   <div class="panel-heading">
+                    <small class="pull-right">
+                      <em class="text-muted">
+                        Posted on
+                        <span data-ng-bind="comment.created | date:'mediumDate'"></span>
+                        
+                      </em>
+                    </small> <h4>
+                        <span data-ng-bind="comment.user"></span></h4></div>
+                    <div class="panel-body">
+                      
+                      <div class="clearfix"></div>
+                      <hr>
+                      {{comment.comment}}
+                      <hr>
+                     
+                    </div><!--/panel-body-->
+                 </div><!--/panel-->
+
+                 <div class="well"> 
+                     <form class="form-horizontal" role="form">
+                      <h4>Add Comment</h4>
+                       <div class="form-group" style="padding:14px;">
+                        <textarea class="form-control" ng-model="comment" placeholder="Add your comments here"></textarea>
+                      </div>
+                      <div class="form-group">
+                         <button class="btn btn-success pull-right" ng-click="addcomment()" type="button">Post</button>
+                      </div>
+                     
+                    </form>
+                </div><!--/well-->
+	
+</section>
+
+
+  

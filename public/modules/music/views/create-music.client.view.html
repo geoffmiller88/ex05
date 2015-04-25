@@ -1,0 +1,40 @@
+<section data-ng-controller="MusicController">
+     <div class="row">
+             <div class="col-sm-6">
+               
+             
+                <div class="well"> 
+                     <form ng-submit="create()" class="form-horizontal" enctype="multipart/form-data" role="form" novalidate style="color:#555555">
+                      <h4>Upload Music</h4>
+                     
+                      <div style="padding-left:15px" class="form-group">
+                            <label class="control-label" for="name">Name</label>
+                            <div class="controls">
+                                <input type="text" name="name" ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                            </div>
+                        </div>
+                         <div style="padding-left:15px" class="form-group">
+                    <label class="control-label" for="name">File Upload</label>
+                    <div class="controls">
+                        <div class="btn btn-default" ng-file-select ng-model="files" accept=".mp3">Select File</div>
+                            <ul>
+                                    <li ng-repeat="f in files" style="font:smaller">{{f.name}}</li>
+                            </ul>
+                        
+                    </div>
+                </div>
+               
+               <div class="form-group">
+                <button class="btn btn-success pull-right" type="submit">Upload</button>
+               </div>
+                
+                      
+                      <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+                    </form>
+                </div><!--/well-->
+            </div>
+        </div>
+   
+</section>

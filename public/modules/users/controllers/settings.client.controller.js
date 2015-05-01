@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', '$upload',
+	function($scope, $http, $location, Users, Authentication, $upload) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
@@ -14,6 +14,30 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			}
 
 			return false;
+		};
+
+		$scope.file = '';
+
+		// Create new Music
+		$scope.uploadImage = function() {
+
+			if ($scope.files && $scope.files.length) {
+            for (var i = 0; i < $scope.files.length; i++) {
+                var file = $scope.files[i];
+                $upload.upload({
+                    url: '/user/changeimage',
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                }).success(function (data, status, headers, config) {
+                	$scope.user=data;
+                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                });
+            }
+        }
+
+			
 		};
 
 		// Check if provider is already in use with current user

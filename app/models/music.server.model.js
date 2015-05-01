@@ -45,7 +45,10 @@ var MusicSchema = new Schema({
 			  user: {
 			  	type: String
 				  
-			  }  
+			  },
+			  userimage: {
+			  	type: String
+			  },
 		  }
 		  ]
 		});

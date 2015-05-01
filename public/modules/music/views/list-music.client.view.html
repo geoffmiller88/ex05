@@ -2,11 +2,13 @@
     <div class="row">
              <div class="col-sm-6">
                 <div class="panel panel-default">
-                  <div class="panel-heading"><a href="" class="btn btn-default pull-right">Download Selected</a> <h4>Music</h4></div>
+                  <div class="panel-heading"><h4>Music</h4></div>
                     <div class="panel-body">
                       <div class="list-group">
                         <div data-ng-repeat="music in musics">
-                            <input type="checkbox">
+                           <a class="btn btn-primary" href="{{music.url}}" download>
+                                <i class="glyphicon glyphicon-download"></i>
+                            </a>
                             <a style="display:inline-block" data-ng-href="#!/music/{{music._id}}"  href="#" class="list-group-item ">
                             <strong>{{music.name}}</strong> - 
                             <small class="list-group-item-text">

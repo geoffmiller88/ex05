@@ -23,6 +23,7 @@ exports.signup = function(req, res) {
 	// Add missing user fields
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
+	user.image = '/modules/users/img/face.png';
 
 	// Then save the user 
 	user.save(function(err) {
@@ -135,7 +136,8 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 							displayName: providerUserProfile.displayName,
 							email: providerUserProfile.email,
 							provider: providerUserProfile.provider,
-							providerData: providerUserProfile.providerData
+							providerData: providerUserProfile.providerData,
+							image: '/modules/users/img/face.png'
 						});
 
 						// And save the user

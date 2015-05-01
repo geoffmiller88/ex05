@@ -29,7 +29,7 @@ module.exports = function(db) {
 	// Initialize express app
 	var app = express();
 	app.use(multer({
-    dest: './uploads/',
+    dest: './uploads/uploads/',
     rename: function(fieldname, filename) {
         return filename;
     },
@@ -124,6 +124,8 @@ module.exports = function(db) {
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
+
+	app.use(express.static(path.resolve('./uploads')));
 
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {

@@ -54,6 +54,7 @@
         <div data-ng-controller="HeaderController" class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
           <div data-spy="affix" data-offset-top="45" data-offset-bottom="90">
             <ul class="nav" id="sidebar-nav">
+              <li><img src="/modules/core/img/logo.png"></li>	
               <li><a href="#!/">Home</a></li>
               <li  data-ng-if="menu.shouldRender(authentication.user);"> <a href="#!/music">Music</a></li>
               <li  data-ng-if="menu.shouldRender(authentication.user);"><a href="#!/music/create">Upload Music</a></li>
@@ -98,7 +99,10 @@
 	<script
     	type="text/javascript"
         src="/lib/angular-socket-io/socket.min.js"></script>
-        
+
+    <script src="http://static.videogular.com/scripts/videogular/latest/videogular.js"></script>
+	<script src="http://static.videogular.com/scripts/controls/latest/vg-controls.js"></script>
+
 </body>
 
 </html>

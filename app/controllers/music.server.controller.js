@@ -15,7 +15,8 @@ exports.create = function(req, res) {
 	var music = new Music(req.body);
 	
 	music.user = req.user;
-	music.url = '/uploads/'+req.files.file.name;
+	music.url = 'http://localhost:3000/uploads/'+req.files.file.name;
+	
 	
 	music.save(function(err) {
 		if (err) {
@@ -131,7 +132,8 @@ exports.addcomment= function(req, res) {
 		var music=req.music;
 			console.log(req.user);
 		var newComment = {
-					  user: req.user.displayName, 
+					  user: req.user.displayName,
+					  userimage: req.user.image,
 					  comment: req.body.comment
 					
 				  };

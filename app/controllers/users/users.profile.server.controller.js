@@ -12,6 +12,27 @@ var _ = require('lodash'),
 /**
  * Update user details
  */
+ exports.changeImage= function(req,res){
+ 	var user=req.user;
+ 	user.image = '/uploads/'+req.files.file.name;
+
+ 	user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.json(user);
+					}
+				});
+			}
+		});
+ };
+
 exports.update = function(req, res) {
 	// Init Variables
 	var user = req.user;

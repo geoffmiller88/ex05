@@ -16,32 +16,10 @@
                     <h4>{{music.name}}</h4></div>
                     <div class="panel-body">
 
-                      <audio controls>                        
+                      <audio ng-src="{{music.url}}" controls>
                         
-                        <source src="{{music.url}}" type="audio/mpeg">
-                        <source src="{{music.url}}" type="audio/ogg">      
-                        <!-- <source src="http://localhost:3000/uploads/ACDC_-_Back_In_Black-sample.ogg" type="audio/ogg"> -->
-                        <!-- <source src="http://localhost:3000/uploads/01 - Overture.mp3" type="audio/mpeg"> -->                     
-
                       </audio>
 
-
-
-                      <!-- <videogular vg-theme="config.theme.url" class="videogular-container audio">
-                          <vg-media vg-src="config.sources" vg-type="audio"></vg-media>
-
-                          <vg-controls>
-                              <vg-play-pause-button></vg-play-pause-button>
-                              <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
-                              <vg-scrub-bar>
-                                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                              </vg-scrub-bar>
-                              <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
-                              <vg-volume>
-                                  <vg-mute-button></vg-mute-button>
-                              </vg-volume>
-                          </vg-controls>
-                      </videogular> -->
 
                       <hr>
                       <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == music.user._id))">
@@ -51,14 +29,21 @@
                       <a class="btn btn-primary" data-ng-click="remove();">
                         <i class="glyphicon glyphicon-trash"></i>
                       </a>
+                      
+                    </div>
+
+                    <div class="pull-right" style ="padding-right: 10px;">
+
                       <a class="btn btn-primary" href="{{music.url}}" download>
                         <i class="glyphicon glyphicon-download"></i>
                       </a>
+
                     </div>
                       
                     </div><!--/panel-body-->
                  </div><!--/panel-->
 
+                <div data-ng-show="((authentication.user))">
                  <div class="panel panel-default" ng-repeat="comment in music.comments">
                    <div class="panel-heading">
                     <small class="pull-right">
@@ -93,7 +78,7 @@
                      
                     </form>
                 </div><!--/well-->
-	
+	             </div>
 </section>
 
 
